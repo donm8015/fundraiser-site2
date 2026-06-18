@@ -1,0 +1,29 @@
+{
+  "node": {
+    "0075ad514b7b47485ba8711cf77a6173c2a6ceee4a": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/actions/donations.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getDonations",
+          "filename": "app/actions/donations.ts"
+        }
+      },
+      "exportedName": "getDonations",
+      "filename": "app/actions/donations.ts"
+    },
+    "407ff95d121c478bc776539af74ccfca1f84532cba": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/actions/donations.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "addDonation",
+          "filename": "app/actions/donations.ts"
+        }
+      },
+      "exportedName": "addDonation",
+      "filename": "app/actions/donations.ts"
+    }
+  },
+  "edge": {}
+}
