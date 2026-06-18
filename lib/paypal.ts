@@ -1,5 +1,5 @@
 const base =
-  process.env.NODE_ENV === "production"
+  process.env.PAYPAL_ENV === "live"
     ? "https://api-m.paypal.com"
     : "https://api-m.sandbox.paypal.com"
 

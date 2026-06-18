@@ -10,16 +10,16 @@ import { VerificationSection } from "@/components/verification-section"
 import { StorySection } from "@/components/story-section"
 
 const GOAL = 90
-const PAYPAL = "tebza27@gmail.com"
+const PAYPAL_EMAIL = process.env.PAYPAL_EMAIL ?? "tebza27@gmail.com"
 
 export default async function FundraiserPage() {
   const donations = await getDonations()
   const total = donations.reduce((sum, d) => sum + Number(d.amount), 0)
 
   return (
-    <main className="mx-auto flex min-h-svh w-full max-w-2xl flex-col gap-6 px-4 py-8 sm:py-12">
+    <main className="mx-auto min-h-screen w-full max-w-4xl flex-col gap-6 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <Card className="overflow-hidden pt-0">
-        <div className="relative h-44 w-full sm:h-56">
+        <div className="relative h-52 w-full sm:h-64">
           <Image
             src="/graduation-hero.png"
             alt="A smiling graduate on a college campus"
@@ -34,7 +34,7 @@ export default async function FundraiserPage() {
               <GraduationCap className="size-3.5" />
               BYU Tuition Fund
             </span>
-            <h1 className="text-balance text-2xl font-bold tracking-tight sm:text-3xl">
+            <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
               Help Sifiso Stay in School
             </h1>
             <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
@@ -47,34 +47,37 @@ export default async function FundraiserPage() {
         </CardContent>
       </Card>
 
-      <StorySection />
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <StorySection />
+        <VerificationSection />
+      </div>
 
-      <VerificationSection />
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Make a contribution</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-5">
-          <DonationForm />
-          <div className="flex items-center justify-between gap-3 rounded-lg bg-muted px-4 py-3 text-sm">
-            <div className="min-w-0">
-              <p className="font-medium text-foreground">Prefer PayPal?</p>
-              <p className="truncate text-muted-foreground">{PAYPAL}</p>
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <Card>
+          <CardHeader>
+            <CardTitle>Make a contribution</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-5">
+            <DonationForm />
+            <div className="flex items-center justify-between gap-3 rounded-lg bg-muted px-4 py-3 text-sm">
+              <div className="min-w-0">
+                <p className="font-medium text-foreground">Prefer PayPal?</p>
+                <p className="truncate text-muted-foreground">{PAYPAL_EMAIL}</p>
+              </div>
+              <CopyPaypal email={PAYPAL_EMAIL} />
             </div>
-            <CopyPaypal email={PAYPAL} />
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Supporters</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <SupportersList donations={donations} />
-        </CardContent>
-      </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Supporters</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <SupportersList donations={donations} />
+          </CardContent>
+        </Card>
+      </div>
 
       <p className="pb-4 text-center text-xs text-muted-foreground">
         Thank you for supporting Sifiso&apos;s education.
